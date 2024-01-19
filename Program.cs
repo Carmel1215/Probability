@@ -1,5 +1,10 @@
 ﻿public static class Utility
 {
+    public static void SetConsole()
+    {
+        Console.Title = "Probability";
+    }
+
     public static void WrongInput()
     {
         Console.Clear();
@@ -242,6 +247,8 @@ namespace Probability
             bool isEnd = false;
             Trial trial = new Trial();
 
+            Utility.SetConsole(); // Console Setting
+
             // Main Loop
             while (!isEnd)
             {
@@ -256,7 +263,7 @@ namespace Probability
 [2] 주사위 굴리기
 [3] 윷 던지기
 
-v1.0.0-alpha
+v1.0.1
 Made By TaeHwan
 "
                 );
