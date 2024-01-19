@@ -263,16 +263,15 @@ namespace Probability
 [2] 주사위 굴리기
 [3] 윷 던지기
 
-v1.0.1
+v1.0.2
 Made By TaeHwan
-"
-                );
+");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
 
                 switch (userInput.Key)
                 {
                     case ConsoleKey.D0:
-                        Environment.Exit(0);
+                        isEnd = true;
                         break;
                     case ConsoleKey.D1:
                         trial.CoinEvent();
