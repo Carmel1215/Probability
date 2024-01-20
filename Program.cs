@@ -334,7 +334,7 @@ namespace Probability
 [3] 윷 던지기
 [4] 설정
 
-v1.0.2
+v1.1.1
 Made By TaeHwan
 ");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
