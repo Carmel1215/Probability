@@ -1,6 +1,8 @@
 ﻿public static class Utility
 {
-    public static void SetConsole()
+    public static bool isPrintEvent = true;
+
+    public static void InitConsole()
     {
         Console.Title = "Probability";
     }
@@ -11,6 +13,63 @@
         Console.WriteLine(@"
 잘못된 입력입니다.");
         Console.ReadKey(true);
+    }
+
+    public static void ConsoleSetting()
+    {
+        Console.Clear();
+        Console.WriteLine(@"
+================================
+           콘솔 설정
+================================");
+        
+        if (isPrintEvent)
+        {
+            Console.WriteLine(@"
+[0] 뒤로가기
+[1] 사건 값 출력하지 않기 (속도가 빨라집니다!)
+");
+        }
+        else
+        {
+            Console.WriteLine(@"
+[0] 뒤로가기
+[1] 사건 값 출력하기 (속도가 매우 느려질 수 있습니다!)
+");
+        }
+        
+        ConsoleKeyInfo userInput = Console.ReadKey(true);
+
+        if (userInput.Key == ConsoleKey.D0)
+        {
+            return;
+        }
+        else if (userInput.Key == ConsoleKey.D1)
+        {
+            if (isPrintEvent)
+            {
+                isPrintEvent = false;
+
+                Console.Clear();
+                Console.WriteLine(@"
+이제 사건 값을 출력하지 않습니다!");
+                Console.ReadKey();
+            }
+            else
+            {
+                isPrintEvent = true;
+
+                Console.Clear();
+                Console.WriteLine(@"
+이제 사건 값을 출력합니다!");
+                Console.ReadKey();
+            }
+        }
+        else
+        {
+            WrongInput();
+            ConsoleSetting();
+        }
     }
 }
 
@@ -35,7 +94,11 @@ public class Trial
             for (int i = 0; i < loopTime; i++)
             {
                 result[i] = rand.Next(2);
-                Console.Write(result[i]);
+
+                if (Utility.isPrintEvent)
+                {
+                    Console.Write(result[i]);
+                }
             }
 
             for (int i = 0; i < result.Length; i++)
@@ -91,7 +154,11 @@ public class Trial
             for (int i = 0; i < loopTime; i++)
             {
                 result[i] = rand.Next(1, 7);
-                Console.Write(result[i]);
+
+                if (Utility.isPrintEvent)
+                {
+                    Console.Write(result[i]);
+                }
             }
 
             for (int i = 0; i < result.Length; i++)
@@ -181,11 +248,14 @@ public class Trial
                     }
                 }
 
-                Console.Write(yutArray[0]);
-                Console.Write(yutArray[1]);
-                Console.Write(yutArray[2]);
-                Console.Write(yutArray[3]);
-                Console.WriteLine();
+                if (Utility.isPrintEvent)
+                {
+                    Console.Write(yutArray[0]);
+                    Console.Write(yutArray[1]);
+                    Console.Write(yutArray[2]);
+                    Console.Write(yutArray[3]);
+                    Console.WriteLine();
+                }
 
                 switch (count0)
                 {
@@ -247,7 +317,7 @@ namespace Probability
             bool isEnd = false;
             Trial trial = new Trial();
 
-            Utility.SetConsole(); // Console Setting
+            Utility.InitConsole(); // Console Setting
 
             // Main Loop
             while (!isEnd)
@@ -262,6 +332,7 @@ namespace Probability
 [1] 동전 던지기
 [2] 주사위 굴리기
 [3] 윷 던지기
+[4] 설정
 
 v1.0.2
 Made By TaeHwan
@@ -281,6 +352,9 @@ Made By TaeHwan
                         break;
                     case ConsoleKey.D3:
                         trial.YutEvent();
+                        break;
+                    case ConsoleKey.D4:
+                        Utility.ConsoleSetting();
                         break;
                     default:
                         Utility.WrongInput();
