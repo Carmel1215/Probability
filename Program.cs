@@ -1,6 +1,6 @@
 ﻿public static class Utility
 {
-    public static bool isPrintEvent = true;
+    public static bool isPrintEvent = true; // 사건 값 출력 여부 저장
 
     public static void InitConsole()
     {
@@ -22,12 +22,12 @@
 ================================
            콘솔 설정
 ================================");
-        
+
         if (isPrintEvent)
         {
             Console.WriteLine(@"
 [0] 뒤로가기
-[1] 사건 값 출력하지 않기 (속도가 빨라집니다!)
+[1] 사건 값 출력하지 않기 (속도가 매우 빨라집니다!)
 ");
         }
         else
@@ -37,38 +37,37 @@
 [1] 사건 값 출력하기 (속도가 매우 느려질 수 있습니다!)
 ");
         }
-        
+
         ConsoleKeyInfo userInput = Console.ReadKey(true);
 
-        if (userInput.Key == ConsoleKey.D0)
+        switch (userInput.Key)
         {
-            return;
-        }
-        else if (userInput.Key == ConsoleKey.D1)
-        {
-            if (isPrintEvent)
-            {
-                isPrintEvent = false;
+            case ConsoleKey.D0:
+                return;
+            case ConsoleKey.D1:
+                if (isPrintEvent)
+                {
+                    isPrintEvent = false;
 
-                Console.Clear();
-                Console.WriteLine(@"
+                    Console.Clear();
+                    Console.WriteLine(@"
 이제 사건 값을 출력하지 않습니다!");
-                Console.ReadKey();
-            }
-            else
-            {
-                isPrintEvent = true;
+                    Console.ReadKey();
+                }
+                else
+                {
+                    isPrintEvent = true;
 
-                Console.Clear();
-                Console.WriteLine(@"
+                    Console.Clear();
+                    Console.WriteLine(@"
 이제 사건 값을 출력합니다!");
-                Console.ReadKey();
-            }
-        }
-        else
-        {
-            WrongInput();
-            ConsoleSetting();
+                    Console.ReadKey();
+                }
+                break;
+            default:
+                WrongInput();
+                ConsoleSetting();
+                break;
         }
     }
 }
@@ -334,7 +333,7 @@ namespace Probability
 [3] 윷 던지기
 [4] 설정
 
-v1.1.1
+v1.1.2
 Made By TaeHwan
 ");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
