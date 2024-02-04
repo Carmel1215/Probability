@@ -112,7 +112,17 @@ public class Trial
                 }
             }
 
+            Console.Clear();
             Console.WriteLine(@"
+< 수학적 확률>
+
+[ 확률 ]
+앞면 : 0.5
+뒷면 : 0.5
+
+--------------------------------------
+
+< 빈도적 확률 >
 
 [ 경우의 수 ]
 앞면 : {0}
@@ -185,7 +195,21 @@ public class Trial
                 }
             }
 
+            Console.Clear();
             Console.WriteLine(@"
+< 수학적 확률>
+
+[ 확률 ]
+1 : 0.1666...
+2 : 0.1666...
+3 : 0.1666...
+4 : 0.1666...
+5 : 0.1666...
+6 : 0.1666...
+
+--------------------------------------
+
+< 빈도적 확률 >
 
 [ 경우의 수 ]
 1 : {0}
@@ -281,7 +305,18 @@ public class Trial
                 }
             }
 
+            Console.Clear();
             Console.WriteLine(@"
+< 수학적 확률>
+
+[ 확률 ]
+도 : 0.25
+개 : 0.375
+걸 : 0.25
+윷 : 0.0625
+모 : 0.0625
+
+--------------------------------------
 
 [ 경우의 수 ]
 도 : {0}
@@ -333,7 +368,7 @@ namespace Probability
 [3] 윷 던지기
 [4] 설정
 
-v1.1.2
+v1.2.0
 Made By TaeHwan
 ");
                 ConsoleKeyInfo userInput = Console.ReadKey(true);
